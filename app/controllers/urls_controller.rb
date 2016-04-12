@@ -15,7 +15,7 @@ class UrlsController < ApplicationController
       if @url.save
         redirect_to edit_url_path(@url)
       else
-        render 'pages/home'
+        render 'index'
       end
     else
       redirect_to edit_url_path(@url.find_duplicate)
