@@ -1,4 +1,4 @@
 .col-md-6.col-md-offset-3 style="margin-bottom: 10em"
   = simple_form_for @url do |f|
-    = f.input :original_url, as: :string
+    = f.input :original_url, as: :string, placeholder: "Enter the URL you want to shorten...", label: false
     = f.submit "Shorten", class: "btn btn-primary"
