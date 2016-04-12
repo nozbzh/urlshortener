@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  root to: 'urls#index'
   get "/:id", to: "urls#show"
   resources :urls, only: [:create, :edit]
 end

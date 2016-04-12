@@ -1,6 +1,10 @@
 class UrlsController < ApplicationController
   before_action :find_url, only: [:show, :edit]
 
+  def index
+    @url = Url.new
+  end
+
   def show
     redirect_to @url.original_url
   end
