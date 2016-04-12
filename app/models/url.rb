@@ -1,5 +1,5 @@
 class Url < ApplicationRecord
-  validates :original_url, presence: true
+  validates :original_url, presence: true, on: :create
   validates_format_of :original_url,
     with: /\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?\z/
   before_create :generate_short_url

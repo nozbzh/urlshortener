@@ -23,11 +23,11 @@ en:
   activerecord:
     attributes:
       url:
-        original_url: "URL"
+        original_url: "Original URL:"
     errors:
       models:
         url:
           attributes:
             original_url:
               blank: "Please enter the URL you want to shorten"
-              invalid: "does not match a valid URL"
+              invalid: "Please enter a valid URL"
