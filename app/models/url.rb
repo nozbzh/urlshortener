@@ -4,6 +4,15 @@ class Url < ApplicationRecord
   before_create :generate_short_url
 
   def generate_short_url
-    self.short_url = Url.last.nil? ? "1hahaha" : "#{Url.last.id + 1}hahaha"
+    self.short_url = Url.last.nil? ? "1lailai" : "#{Url.last.id + 1}lailai"
   end
+
+  def new_url?
+    Url.find_by_original_url(self.original_url).nil?
+  end
+
+  def find_duplicate
+    Url.find_by_original_url(self.original_url)
+  end
+
 end

@@ -1,8 +1,4 @@
-.col-md-8.col-md-offset-2
-  h1.text-center See you in Komodo!
-  .col-md-6.col-md-offset-3
-    = simple_form_for @url do |f|
-      = f.input :original_url, as: :string
-      = f.submit "Shorten", class: "btn btn-primary"
-    - if flash[:success] == "Your URL has been shortened!"
-      p Your shortened URL is: #{@short_url}
+.col-md-6.col-md-offset-3 style="margin-bottom: 10em"
+  = simple_form_for @url do |f|
+    = f.input :original_url, as: :string
+    = f.submit "Shorten", class: "btn btn-primary"

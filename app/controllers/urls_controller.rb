@@ -1,22 +1,28 @@
 class UrlsController < ApplicationController
+  before_action :find_url, only: [:show, :edit]
 
   def show
-    @url = Url.find(params[:id])
     redirect_to @url.original_url
   end
 
   def create
     @url = Url.new(url_params)
-    # need to check for existing original url in DB
-    if @url.save
-      flash[:success] = "Your URL has been shortened!"
-      redirect_to root_path
+    if @url.new_url?
+      if @url.save
+        redirect_to edit_url_path(@url)
+      else
+        render 'pages/home'
+      end
     else
-      render 'pages/home'
+      redirect_to edit_url_path(@url.find_duplicate)
     end
   end
 
   private
+
+  def find_url
+    @url = Url.find(params[:id])
+  end
 
   def url_params
     params.require(:url).permit(:original_url)

@@ -1,3 +1,4 @@
 - [:notice, :error, :alert, :success].each do |name|
   - if flash[name].present?
-    = name
+    .text-center
+      = flash[name]
