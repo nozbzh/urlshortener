@@ -1,10 +1,11 @@
 class Url < ApplicationRecord
   validates :original_url, presence: true, on: :create
-  validates_format_of :original_url, with: URI.regexp
+  validates_format_of :original_url,
+    with: /\A(?:(?:http|https):\/\/)?([-a-zA-Z0-9.]{2,256}\.[a-z]{2,4})\b(?:\/[-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)?\z/
   before_create :generate_short_url
 
   def generate_short_url
-    # make an array of ascii code for a-zA-Z0-9
+    # make an array of ascii codes for a-zA-Z0-9
     ascii = []
     ascii << (48..57).to_a  # 0-9
     ascii << (65..90).to_a  # a-z
@@ -18,12 +19,12 @@ class Url < ApplicationRecord
     self.short_url = ascii.sample(6).pack('UUUUUU') until Url.find_by_short_url(self.short_url).nil?
   end
 
-  def new_url?
-    Url.find_by_sanitized_url(self.sanitized_url).nil?
-  end
-
   def find_duplicate
     Url.find_by_sanitized_url(self.sanitized_url)
+  end
+
+  def new_url?
+    find_duplicate.nil?
   end
 
   def sanitize
@@ -31,5 +32,4 @@ class Url < ApplicationRecord
     self.sanitized_url.slice!(-1) if self.sanitized_url[-1] == "/"
     self.sanitized_url = "http://#{self.sanitized_url}"
   end
-
 end
