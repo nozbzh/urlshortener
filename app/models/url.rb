@@ -4,7 +4,18 @@ class Url < ApplicationRecord
   before_create :generate_short_url
 
   def generate_short_url
-    self.short_url = Url.last.nil? ? "1lailai" : "#{Url.last.id + 1}lailai"
+    # make an array of ascii code for a-zA-Z0-9
+    ascii = []
+    ascii << (48..57).to_a  # 0-9
+    ascii << (65..90).to_a  # a-z
+    ascii << (97..122).to_a # A-Z
+    ascii.flatten!
+    # here we assign a short_url
+    self.short_url = ascii.sample(6).pack('UUUUUU')
+    # here we check the DB to make sure the generated short_url above doesn't
+    # already exist in the DB. Until we are sure that it doesn't match an existing
+    # short_url we generate a new short_url
+    self.short_url = ascii.sample(6).pack('UUUUUU') until Url.find_by_short_url(self.short_url).nil?
   end
 
   def new_url?
