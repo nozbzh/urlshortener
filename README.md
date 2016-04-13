@@ -1,1 +1,8 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates)
+#Challenge
+Create a URL shortener.
+
+#Solution
+
+
+#Demo
+[![IMAGE ALT TEXT HERE](http://g.recordit.co/KAdOucgxxP.gif)]
