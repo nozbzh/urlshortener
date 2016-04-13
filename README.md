@@ -5,4 +5,4 @@ Create a URL shortener.
 
 
 #Demo
-[![IMAGE ALT TEXT HERE](http://g.recordit.co/KAdOucgxxP.gif)]
+![IMAGE ALT TEXT HERE](http://g.recordit.co/KAdOucgxxP.gif)
