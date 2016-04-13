@@ -1,11 +1,11 @@
 class UrlsController < ApplicationController
-  before_action :find_url, only: [:show, :edit]
 
   def index
     @url = Url.new
   end
 
   def show
+    @url = Url.find_by_short_url(params[:id])
     redirect_to @url.sanitized_url
   end
 
@@ -23,11 +23,11 @@ class UrlsController < ApplicationController
     end
   end
 
-  private
-
-  def find_url
+  def edit
     @url = Url.find(params[:id])
   end
+
+  private
 
   def url_params
     params.require(:url).permit(:original_url)
