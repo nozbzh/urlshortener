@@ -16,4 +16,10 @@ class Url < ApplicationRecord
     Url.find_by_original_url(self.original_url)
   end
 
+  def sanitize!
+    self.original_url.gsub!(/(https?:\/\/)|(www\.)/, "")
+    self.original_url.slice!(-1) if self.original_url[-1] == "/"
+    self.original_url = "http://www.#{self.original_url}"
+  end
+
 end

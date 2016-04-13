@@ -11,6 +11,7 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new(url_params)
+    @url.sanitize!
     if @url.new_url?
       if @url.save
         redirect_to edit_url_path(@url)
