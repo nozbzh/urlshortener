@@ -9,17 +9,17 @@ class Url < ApplicationRecord
   end
 
   def new_url?
-    Url.find_by_original_url(self.original_url).nil?
+    Url.find_by_sanitized_url(self.sanitized_url).nil?
   end
 
   def find_duplicate
-    Url.find_by_original_url(self.original_url)
+    Url.find_by_sanitized_url(self.sanitized_url)
   end
 
-  def sanitize!
-    self.original_url.gsub!(/(https?:\/\/)|(www\.)/, "")
-    self.original_url.slice!(-1) if self.original_url[-1] == "/"
-    self.original_url = "http://www.#{self.original_url}"
+  def sanitize
+    self.sanitized_url = self.original_url.gsub(/(https?:\/\/)|(www\.)/, "")
+    self.sanitized_url.slice!(-1) if self.sanitized_url[-1] == "/"
+    self.sanitized_url = "http://www.#{self.sanitized_url}"
   end
 
 end

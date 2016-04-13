@@ -6,12 +6,12 @@ class UrlsController < ApplicationController
   end
 
   def show
-    redirect_to @url.original_url
+    redirect_to @url.sanitized_url
   end
 
   def create
     @url = Url.new(url_params)
-    @url.sanitize!
+    @url.sanitize
     if @url.new_url?
       if @url.save
         redirect_to edit_url_path(@url)
