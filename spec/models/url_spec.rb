@@ -20,9 +20,10 @@ RSpec.describe Url, type: :model do
   end
 
   describe "method" do
-    # let(:url_google) do
-    #   create(:url, original_url: "google.com")
-    # end
+    before :each do
+      @url_google = create(:url, original_url: "google.com")
+      @url_google.sanitize
+    end
 
     it "#generate_short_url generates a 6-char string containing only letters and numbers" do
       url = build(:url)
@@ -30,26 +31,20 @@ RSpec.describe Url, type: :model do
       expect(url.short_url).to match(/\A[a-z\d]{6}\z/i)
     end
 
-    # it "#find_duplicate finds a duplicate in the database" do
-    #   url_google = create(:url, original_url: "google.com")
-    #   url_google.sanitize
-    #   url = build(:url, original_url: "www.google.com")
-    #   url.sanitize
-    #   expect(url.find_duplicate).to eq(url_google)
-    # end
+    it "#find_duplicate finds a duplicate in the database" do
+      url = build(:url, original_url: "www.google.com")
+      url.sanitize
+      expect(url.find_duplicate).to eq(@url_google)
+    end
 
     context "#new_url?" do
-      # it "returns false if the URL is already present in the database" do
-      #   url_google = create(:url, original_url: "google.com")
-      #   url_google.sanitize
-      #   url = build(:url, original_url: "www.google.com")
-      #   url.sanitize
-      #   expect(url.new_url?).to eq(false)
-      # end
+      it "returns false if the URL is already present in the database" do
+        url = build(:url, original_url: "www.google.com")
+        url.sanitize
+        expect(url.new_url?).to eq(false)
+      end
 
       it "returns true if the URL is not found in the database" do
-        url_google = create(:url, original_url: "google.com")
-        url_google.sanitize
         url = build(:url, original_url: "www.toto.com")
         url.sanitize
         expect(url.new_url?).to eq(true)
