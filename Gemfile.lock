@@ -6,6 +6,53 @@ GIT
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
 
+GIT
+  remote: https://github.com/rspec/rspec-core.git
+  revision: b0c3d536150e16ebf759e00b89fae1fe03f885ef
+  branch: master
+  specs:
+    rspec-core (3.5.0.pre)
+      rspec-support (= 3.5.0.pre)
+
+GIT
+  remote: https://github.com/rspec/rspec-expectations.git
+  revision: d5b6b35d518ab6692f894d2f124608878c1da946
+  branch: master
+  specs:
+    rspec-expectations (3.5.0.pre)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.5.0.pre)
+
+GIT
+  remote: https://github.com/rspec/rspec-mocks.git
+  revision: b1e2b3763e6495ef1ffecdb4ea1af7c526ac5c9f
+  branch: master
+  specs:
+    rspec-mocks (3.5.0.pre)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.5.0.pre)
+
+GIT
+  remote: https://github.com/rspec/rspec-rails.git
+  revision: aeb32e10eee286730cbd490419aed573ac7af038
+  branch: master
+  specs:
+    rspec-rails (3.5.0.pre)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (= 3.5.0.pre)
+      rspec-expectations (= 3.5.0.pre)
+      rspec-mocks (= 3.5.0.pre)
+      rspec-support (= 3.5.0.pre)
+
+GIT
+  remote: https://github.com/rspec/rspec-support.git
+  revision: d8666d5fc14ac08f23b7b9796b42e65bca66bb55
+  branch: master
+  specs:
+    rspec-support (3.5.0.pre)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -46,6 +93,7 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.4.0)
     arel (7.0.0)
     autoprefixer-rails (6.3.6)
       execjs
@@ -60,11 +108,27 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (8.2.4)
+    capybara (2.7.0)
+      addressable
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     coderay (1.1.1)
     concurrent-ruby (1.0.1)
+    database_cleaner (1.5.1)
     debug_inspector (0.0.2)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
+    factory_girl (4.7.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.7.0)
+      factory_girl (~> 4.7.0)
+      railties (>= 3.0.0)
+    faker (1.6.3)
+      i18n (~> 0.5)
     ffi (1.9.10)
     figaro (1.1.1)
       thor (~> 0.14)
@@ -109,6 +173,8 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (3.4.0)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (2.0.0.alpha)
       json
     rack-test (0.6.3)
@@ -182,6 +248,8 @@ GEM
     websocket-driver (0.6.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -191,6 +259,10 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  capybara
+  database_cleaner
+  factory_girl_rails
+  faker
   figaro
   font-awesome-sass
   jbuilder (~> 2.0)
@@ -200,9 +272,15 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma
+  quiet_assets
   rails (= 5.0.0.beta3)
   rails_12factor
   redis
+  rspec-core!
+  rspec-expectations!
+  rspec-mocks!
+  rspec-rails!
+  rspec-support!
   sass-rails
   simple_form!
   slim
