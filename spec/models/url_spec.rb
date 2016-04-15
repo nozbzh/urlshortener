@@ -32,6 +32,9 @@ RSpec.describe Url, type: :model do
       expect(url.short_url).to match(/\A[a-z\d]{6}\z/i)
     end
 
+    it "#generate_short_url always generates a short_url that is not in the database" do
+    end
+
     it "#find_duplicate finds a duplicate in the database" do
       url = build(:url, original_url: "www.google.com")
       url.sanitize
@@ -93,7 +96,7 @@ RSpec.describe Url, type: :model do
     end
   end
 
-  describe "it is valid with the follwing urls:" do
+  describe "is valid with the follwing urls:" do
 
     it "http://www.google.com" do
       url = build(:url, original_url: "http://www.google.com")
