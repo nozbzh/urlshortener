@@ -3,6 +3,8 @@
 
 $(document).ready(function() {
 
+  $('#short-url').popover('show');
+
   var range = document.createRange();
   var selection = window.getSelection();
   range.selectNodeContents(document.getElementById('short-url'));

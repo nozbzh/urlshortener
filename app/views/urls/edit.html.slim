@@ -4,4 +4,4 @@
   br
   br
   p Your shortened URL is:
-  span#short-url #{request.base_url}/#{@url.short_url}
+  span#short-url data-content="Press Ctrl-C to copy" data-placement="bottom" #{request.base_url}/#{@url.short_url}
