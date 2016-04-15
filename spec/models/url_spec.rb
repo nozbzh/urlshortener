@@ -23,6 +23,7 @@ RSpec.describe Url, type: :model do
     before :each do
       @url_google = create(:url, original_url: "google.com")
       @url_google.sanitize
+      @url_google.save
     end
 
     it "#generate_short_url generates a 6-char string containing only letters and numbers" do

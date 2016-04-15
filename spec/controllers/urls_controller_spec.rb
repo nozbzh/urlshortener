@@ -78,6 +78,7 @@ RSpec.describe UrlsController, type: :controller do
         before :each do
           @url = create(:url, original_url: 'google.com')
           @url.sanitize
+          @url.save
         end
         it "does not create a new url entry" do
           expect{
