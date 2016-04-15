@@ -8,7 +8,7 @@ html
     meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
     = stylesheet_link_tag    'application', media: 'all'
 
-  body
+  body class="#{controller_name} #{action_name}"
     .col-md-8.col-md-offset-2
       = render 'application/header'
       = render 'application/notifications'
