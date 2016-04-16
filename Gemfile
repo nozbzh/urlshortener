@@ -16,6 +16,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'autoprefixer-rails'
+gem "google_custom_search_api"
 
 group :development, :test do
   gem 'binding_of_caller'
