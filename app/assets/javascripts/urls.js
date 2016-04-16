@@ -5,6 +5,9 @@ $(".urls.edit").ready(function() {
 
   $('#short-url').popover('show');
 
+  $('body').click(function(){
+    $('#short-url').popover('hide')
+  });
   var range = document.createRange();
   var selection = window.getSelection();
   range.selectNodeContents(document.getElementById('short-url'));
