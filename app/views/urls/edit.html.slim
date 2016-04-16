@@ -6,4 +6,4 @@
   p Your shortened URL is:
   span#short-url data-content="Press Ctrl-C to copy" data-placement="bottom" #{request.base_url}/#{@url.short_url}
   br
-  img alt="komodo" src="#{@image}" style='width: 500px; padding-top: 4em'
+  img alt="komodo" src=image_path("#{(1..15).to_a.sample}.jpg") style='width: 500px; padding-top: 4em'
