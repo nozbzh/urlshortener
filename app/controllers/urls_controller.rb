@@ -28,7 +28,7 @@ class UrlsController < ApplicationController
     results = GoogleCustomSearchApi.search('komodo', page: page, searchType: 'image')
     result = (0..9).to_a.sample
     @full_result = results["items"][result]
-    @image = full_result["link"]
+    @image = @full_result["link"]
     @url = Url.find(params[:id])
   end
 
