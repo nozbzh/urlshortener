@@ -1,4 +1,26 @@
+- if (message = flash[:notice]).present?
+  .container-fluid.alert.alert-notice style='padding: 20px;'
+    button.close aria-label="Close" data-dismiss="alert" type="button"
+      span aria-hidden="true" ×
+    center: span= message.html_safe
+
+- if (message = flash[:error]).present?
+  .container-fluid.alert.alert-error style='padding: 20px;'
+    button.close aria-label="Close" data-dismiss="alert" type="button"
+      span aria-hidden="true" ×
+    center: span= message.html_safe
+
+- if (message = flash[:alert]).present?
+  .container-fluid.alert.alert-alert style='padding: 20px;'
+    button.close aria-label="Close" data-dismiss="alert" type="button"
+      span aria-hidden="true" ×
+    center: span= message.html_safe
+
+- if (message = flash[:success]).present?
+  .container-fluid.alert.alert-success style='padding: 20px;'
+    button.close aria-label="Close" data-dismiss="alert" type="button"
+      span aria-hidden="true" ×
+    center: span= message.html_safe
+
 - [:notice, :error, :alert, :success].each do |name|
-  - if flash[name].present?
-    .text-center
-      = flash[name]
+  - flash[name] = nil

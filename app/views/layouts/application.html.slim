@@ -9,9 +9,9 @@ html
     = stylesheet_link_tag    'application', media: 'all'
 
   body class="#{controller_name} #{action_name}"
+    = render 'application/header'
+    = render 'application/notifications'
     .col-md-8.col-md-offset-2
-      = render 'application/header'
-      = render 'application/notifications'
       = yield
       = render 'application/footer'
       = javascript_include_tag 'application'

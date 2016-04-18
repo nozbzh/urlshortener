@@ -14,11 +14,14 @@ class UrlsController < ApplicationController
     @url.sanitize
     if @url.new_url?
       if @url.save
+        flash[:success] = "Your link has been shortened!"
         redirect_to edit_url_path(@url)
       else
+        flash[:error] = "Check the error below:"
         render 'index'
       end
     else
+      flash[:info] = "A short link for this URL is already in our database"
       redirect_to edit_url_path(@url.find_duplicate)
     end
   end
