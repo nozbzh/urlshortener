@@ -28,7 +28,7 @@ class Url < ApplicationRecord
   end
 
   def sanitize
-    self.sanitized_url = self.original_url.gsub(/(https?:\/\/)|(www\.)/, "")
+    self.sanitized_url = self.original_url.downcase.gsub(/(https?:\/\/)|(www\.)/, "")
     self.sanitized_url.slice!(-1) if self.sanitized_url[-1] == "/"
     self.sanitized_url = "http://#{self.sanitized_url}"
   end
