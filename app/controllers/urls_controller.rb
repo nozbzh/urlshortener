@@ -21,7 +21,7 @@ class UrlsController < ApplicationController
         render 'index'
       end
     else
-      flash[:info] = "A short link for this URL is already in our database"
+      flash[:notice] = "A short link for this URL is already in our database"
       redirect_to edit_url_path(@url.find_duplicate)
     end
   end
