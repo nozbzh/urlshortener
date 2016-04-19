@@ -1,0 +1,9 @@
+.header {
+  background-color: #3AE2B6;
+  a {
+    color: $main-font-color;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

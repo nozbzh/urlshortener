@@ -18,3 +18,6 @@ $(".urls.edit").ready(function() {
 });
 
 
+$(".urls.index").ready(function() {
+  $("#url_original_url").attr('size', $("#url_original_url").attr('placeholder').length);
+});

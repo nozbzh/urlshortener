@@ -11,8 +11,9 @@ html
   body class="#{controller_name} #{action_name}"
     = render 'application/header'
     = render 'application/notifications'
-    .col-md-8.col-md-offset-2
-      = yield
+    .col-md-10.col-md-offset-1
+      .wrap
+        = yield
       = render 'application/footer'
       = javascript_include_tag 'application'
 
