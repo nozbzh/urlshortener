@@ -90,7 +90,7 @@ RSpec.describe Url, type: :model do
       it "changes 'www.github.com/DatabaseCleaner/database_cleaner/' to 'http://github.com/DatabaseCleaner/database_cleaner'" do
         url = build(:url, original_url: 'www.github.com/DatabaseCleaner/database_cleaner/')
         url.sanitize
-        expect(url.sanitized_url).to eq('http://github.com/DatabaseCleaner/database_cleaner')
+        expect(url.sanitized_url).to eq('http://github.com/databasecleaner/database_cleaner')
       end
 
     end

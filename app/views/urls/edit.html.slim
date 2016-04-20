@@ -1,9 +1,12 @@
-.col-md-6.col-md-offset-3
-  = simple_form_for @url, url: edit_url_path(@url) do |f|
-    = f.input :original_url, as: :string, disabled: true
-  br
-  br
-  p Your shortened URL is:
-  span#short-url data-content="Press #{user_has_a_mac? ? 'Cmd-C' : 'Ctrl-C'} to copy" data-placement="bottom" #{request.base_url}/#{@url.short_url}
-  br
-  img.img-responsive.center-block alt="komodo" src=image_path("#{(1..15).to_a.sample}.jpg") style='padding-top: 4em'
+.form-card
+  .col-md-6.col-md-offset-3
+    h3 Well done, your URL has been shortned! Share it now!
+    = simple_form_for @url, url: edit_url_path(@url) do |f|
+      = f.input :original_url, as: :string, disabled: true, label: "Your original URL was:"
+    br
+    br
+    p
+      | Your shortened URL is: &nbsp;
+      span#short-url data-content="Press #{user_has_a_mac? ? 'Cmd-C' : 'Ctrl-C'} to copy" data-placement="top" #{request.base_url}/#{@url.short_url}
+    br
+    img.img-responsive.center-block alt="komodo" src=image_path("#{(1..15).to_a.sample}.jpg") style='padding-top: 1em'

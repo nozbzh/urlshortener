@@ -1,1 +1,10 @@
 // Your footer style
+.footer {
+  height: 4em;  /* footer height */
+  padding-top: 20px;
+  display: block;
+  margin-top: 2em; /* space between content and footer */
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+}
