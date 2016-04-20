@@ -5,8 +5,11 @@
       = f.input :original_url, as: :string, disabled: true, label: "Your original URL was:"
     br
     br
-    p
+    p.larger
       | Your shortened URL is: &nbsp;
       span#short-url data-content="Press #{user_has_a_mac? ? 'Cmd-C' : 'Ctrl-C'} to copy" data-placement="top" #{request.base_url}/#{@url.short_url}
     br
+    p And here is the dragon we promised:
     img.img-responsive.center-block alt="komodo" src=image_path("#{(1..15).to_a.sample}.jpg") style='padding-top: 1em'
+    br
+    p Did you know? #{facts.sample.html_safe}
