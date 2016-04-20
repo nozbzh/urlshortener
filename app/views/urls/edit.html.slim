@@ -10,7 +10,12 @@
       | Your shortened URL is: &nbsp;
       span#short-url data-content="Press #{user_has_a_mac? ? 'Cmd-C' : 'Ctrl-C'} to copy" data-placement="top" #{request.base_url}/#{@url.short_url}
     br
-    p Did you know? #{facts.sample.html_safe}
+    br
+    p
+      i.fa.fa-lightbulb-o aria-hidden="true" style="font-size: 6em"
+      span style="font-size: 1.5em" Did you know?
+      <br>
+      |#{facts.sample.html_safe}
   .col-md-6
     br
     p And here is the dragon we promised:
