@@ -1,6 +1,7 @@
 .form-card
-  .col-md-6.col-md-offset-3
-    h3 Well done, your URL has been shortned! Share it now!
+  h3.text-center Well done, your link has been shortened!
+  h3.text-center Share it now!
+  .col-md-6
     = simple_form_for @url, url: edit_url_path(@url) do |f|
       = f.input :original_url, as: :string, disabled: true, label: "Your original URL was:"
     br
@@ -9,7 +10,8 @@
       | Your shortened URL is: &nbsp;
       span#short-url data-content="Press #{user_has_a_mac? ? 'Cmd-C' : 'Ctrl-C'} to copy" data-placement="top" #{request.base_url}/#{@url.short_url}
     br
+    p Did you know? #{facts.sample.html_safe}
+  .col-md-6
+    br
     p And here is the dragon we promised:
     img.img-responsive.center-block alt="komodo" src=image_path("#{(1..15).to_a.sample}.jpg") style='padding-top: 1em'
-    br
-    p Did you know? #{facts.sample.html_safe}
