@@ -93,6 +93,18 @@ RSpec.describe Url, type: :model do
         expect(url.sanitized_url).to eq('http://github.com/databasecleaner/database_cleaner')
       end
 
+      it "strips leading spaces from original_url" do
+        url = build(:url, original_url: '  http://www.google.com')
+        url.sanitize
+        expect(url.original_url).to eq('http://www.google.com')
+      end
+
+      it "strips trailing spaces from original_url" do
+        url = build(:url, original_url: 'http://www.google.com  ')
+        url.sanitize
+        expect(url.original_url).to eq('http://www.google.com')
+      end
+
     end
   end
 
