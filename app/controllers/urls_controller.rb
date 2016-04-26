@@ -5,7 +5,7 @@ class UrlsController < ApplicationController
   end
 
   def show
-    @url = Url.find_by_short_url(params[:id])
+    @url = Url.find_by_short_url(params[:short_url])
     redirect_to @url.sanitized_url
   end
 
