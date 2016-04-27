@@ -2,8 +2,10 @@
   h3.text-center Well done, your link has been shortened!
   h3.text-center Share it now!
   .col-md-6
-    = simple_form_for @url, url: edit_url_path(@url) do |f|
-      = f.input :original_url, as: :string, disabled: true, label: "Your original URL was:"
+    form.simple_form
+    .form-group.string.disabled
+      label.string.disabled.control-label for="url_original_url"  Your original URL was:
+      input#url_original_url.string.disabled.form-control disabled="disabled" value="#{@url.original_url}"
     br
     br
     p.larger
