@@ -26,38 +26,38 @@ RSpec.describe UrlsController, type: :controller do
       @url.save
     end
     it "assigns the requested url to @url" do
-      get :show, params: { id: @url.short_url }
+      get :show, params: { short_url: @url.short_url }
       expect(assigns(:url)).to eq @url
     end
     it "redirects to the sanitized url" do
-      get :show, params: { id: @url.short_url }
+      get :show, params: { short_url: @url.short_url }
       expect(response).to redirect_to(@url.sanitized_url)
     end
     it "has a 302 status code" do
-      get :show, params: { id: @url.short_url }
+      get :show, params: { short_url: @url.short_url }
       expect(response.status).to eq(302)
     end
   end
 
-  describe "GET #edit" do
+  describe "GET #shortened" do
     before :each do
       @url = create(:url, original_url: "google.com")
       @url.sanitize
       @url.save
     end
     it "assigns the requested url to @url" do
-      get :edit, params: { id: @url }
+      get :shortened, params: { short_url: @url.short_url }
       expect(assigns(:url)).to eq(@url)
     end
 
     it "has a 200 status code" do
-      get :edit, params: { id: @url }
+      get :shortened, params: { short_url: @url.short_url }
       expect(response.status).to eq(200)
     end
 
-    it "renders the edit template" do
-      get :edit, params: { id: @url }
-      expect(response).to render_template :edit
+    it "renders the shortened template" do
+      get :shortened, params: { short_url: @url.short_url }
+      expect(response).to render_template :shortened
     end
   end
 
@@ -71,7 +71,7 @@ RSpec.describe UrlsController, type: :controller do
         end
         it "redirects to the url edit page" do
           post :create, params: { url: attributes_for(:url) }
-          expect(response).to redirect_to edit_url_path(assigns[:url])
+          expect(response).to redirect_to shortened_path(assigns[:url].short_url)
         end
       end
       context "with a url that is already in the database" do
@@ -87,7 +87,7 @@ RSpec.describe UrlsController, type: :controller do
         end
         it "redirects to the existing url edit page" do
           post :create, params: { url: attributes_for(:url, original_url: 'www.google.com') }
-          expect(response).to redirect_to edit_url_path(@url)
+          expect(response).to redirect_to shortened_path(@url.short_url)
         end
       end
     end
