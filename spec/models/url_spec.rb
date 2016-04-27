@@ -105,6 +105,12 @@ RSpec.describe Url, type: :model do
         expect(url.original_url).to eq('http://www.google.com')
       end
 
+      it "dowcases original_url before saving it as sanitized_url" do
+        url = build(:url, original_url: 'Google.com')
+        url.sanitize
+        expect(url.sanitized_url).to eq('http://google.com')
+      end
+
     end
   end
 
