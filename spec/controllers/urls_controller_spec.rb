@@ -69,7 +69,7 @@ RSpec.describe UrlsController, type: :controller do
             post :create, params: { url: attributes_for(:url) }
           }.to change(Url, :count).by(1)
         end
-        it "redirects to the url edit page" do
+        it "redirects to the url shortened page" do
           post :create, params: { url: attributes_for(:url) }
           expect(response).to redirect_to shortened_path(assigns[:url].short_url)
         end
@@ -85,7 +85,7 @@ RSpec.describe UrlsController, type: :controller do
             post :create, params: { url: attributes_for(:url, original_url: 'www.google.com') }
           }.to_not change(Url, :count)
         end
-        it "redirects to the existing url edit page" do
+        it "redirects to the existing url shortened page" do
           post :create, params: { url: attributes_for(:url, original_url: 'www.google.com') }
           expect(response).to redirect_to shortened_path(@url.short_url)
         end
