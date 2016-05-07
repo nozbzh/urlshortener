@@ -5,14 +5,13 @@ class Url < ApplicationRecord
   before_create :generate_short_url
 
   def generate_short_url
-    # make an array of ascii codes for a-zA-Z0-9
-    ascii = ['0'..'9','A'..'Z','a'..'z'].map{|range| range.to_a}.flatten
+    chars = ['0'..'9','A'..'Z','a'..'z'].map{|range| range.to_a}.flatten
     # here we assign a short_url
-    self.short_url = 6.times.map{ascii.sample}.join
+    self.short_url = 6.times.map{chars.sample}.join
     # here we check the DB to make sure the generated short_url above doesn't
     # already exist in the DB. We generate a new short_url until we are sure that
     # it doesn't match an existing short_url
-    self.short_url = 6.times.map{ascii.sample}.join until Url.find_by_short_url(self.short_url).nil?
+    self.short_url = 6.times.map{chars.sample}.join until Url.find_by_short_url(self.short_url).nil?
   end
 
   def find_duplicate
