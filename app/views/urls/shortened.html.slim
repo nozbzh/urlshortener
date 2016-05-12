@@ -10,7 +10,7 @@
     br
     p.larger
       | Your shortened URL is: &nbsp;
-      span#short-url data-content="Press #{user_has_a_mac? ? 'Cmd-C' : 'Ctrl-C'} to copy" data-placement="top" #{request.base_url}/#{@url.short_url}
+      span#short-url data-content="Press #{user_has_a_mac? ? 'Cmd-C' : 'Ctrl-C'} to copy" data-placement="bottom" #{request.base_url}/#{@url.short_url}
     br
     br
     p
