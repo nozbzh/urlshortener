@@ -10,7 +10,7 @@ It's very simple to use. Just paste your link in the form on the home page and s
 
 # Demo
 
-![IMAGE ALT TEXT HERE](http://g.recordit.co/KAdOucgxxP.gif)
+![komodo.us demo GIF](http://g.recordit.co/BFBEMvnlrm.gif)
 
 ## Technology used
 
@@ -20,7 +20,7 @@ This appliation uses javacript to auto select the short URL generated in order t
 
 ## Challenges
 
-Generating the short_url token was what I found tricky. Read more about it on medium.
+Generating the short_url token was what I found tricky. Read more about it on [my blog](http://noestauffert.com/blog/the-challenges-i-faced-building-a-simple-url-shortener-using-rails-5).
 
 ## Things to improve
 
